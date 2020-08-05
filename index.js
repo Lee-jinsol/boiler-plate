@@ -3,6 +3,7 @@ const app = express() //새로운 express app 생성
 const port = 5000 //3000번 포트를 백서버로 둠
 const {User} = require("./models/User");
 const bodyParser = require('body-parser');
+const config = require('./config/key');
 
 //application/x-www-form-urlencoded <= 이데이터를 분석해서 가져올수 있도록 
 app.use(bodyParser.urlencoded({extended:true }));
@@ -10,7 +11,7 @@ app.use(bodyParser.urlencoded({extended:true }));
 app.use(bodyParser.json());
 
 const mongoose =require('mongoose')
-mongoose.connect('mongodb+srv://leejinsol:leesola97=@boilerplate.yspmp.mongodb.net/boilerplate?retryWrites=true&w=majority',{
+mongoose.connect(config.mongoURI,{
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then(() => console.log('MongoDB Connected ...'))
   .catch(err => console.log(err))
