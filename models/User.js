@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({ //mongoose 이용해서 스키마 작성
     },
     password: {
         type: String,
-        minlength:50
+        maxlength:50
     },
     lastname:{
         type: String,
@@ -32,4 +32,4 @@ const userSchema = mongoose.Schema({ //mongoose 이용해서 스키마 작성
 })
 
 const User = mongoose.model('User',userSchema)
-module.exports = { User }
+module.exports = { User } //다른곳에서도 User를 사용하기 위해 
